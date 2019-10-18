@@ -1,0 +1,74 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Block
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@block-default-background:                      @global-background;
+@block-muted-background:                        @global-muted-background;
+@block-primary-background:                      @global-primary-background;
+@block-secondary-background:                    @global-secondary-background;
+
+//
+// New
+//
+
+@block-secondary-panel-background:              @panel-box-background;
+@block-secondary-panel-primary-background:      @panel-box-primary-background;
+@block-secondary-panel-secondary-background:    darken(@panel-box-secondary-background, 2%);
+@block-primary-panel-primary-background:        lighten(@global-primary-background, 2%);
+
+
+// Component
+// ========================================================================
+
+.hook-block() {}
+
+
+// Color modifier
+// ========================================================================
+
+.hook-block-default() {}
+
+.hook-block-muted() {}
+
+.hook-block-secondary() {
+
+    .uk-panel-box {
+        background-color: @block-secondary-panel-background;
+    }
+
+    .uk-panel-box-primary {
+        background-color: @block-secondary-panel-primary-background;
+       }
+
+    .uk-panel-box-secondary {
+        background-color: @block-secondary-panel-secondary-background;
+    }
+
+}
+
+.hook-block-primary() {
+
+    &:extend(.uk-contrast all);
+
+    .uk-panel-box {}
+
+    .uk-panel-box-primary {}
+
+    .uk-panel-box-primary {
+        background-color: @block-primary-panel-primary-background;
+    }
+
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-block-misc() {}

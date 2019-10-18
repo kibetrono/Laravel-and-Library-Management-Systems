@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%block content %}
+<h1>This is the hello page</h1>
+<p>
+    {{Title}},
+    {{m_number}},
+
+</p>
+    <ul>
+    {%for friend in m_friends%}
+    <li>{{forloop.counter}}-{{friend}}</li>
+    {%endfor%}
+    </ul>
+{%endblock%}
