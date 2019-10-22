@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Input;
 //use Illuminate\Support\Facades\File;
 //use Illuminate\Support\Facades\URL;
-//use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 //use Validator,Redirect,Response,File;
 //use Input;
 //use Request;
@@ -26,23 +26,21 @@ class SciencesController extends Controller
     {
        // return 'Insert all information about the sciences book';
 
-       /* $devices = Device::all();
+        $sciences = Science::all();
  
         //
-        return 'Insert all information about the sciences book';
-        $sciences =DB::table('sciences')
-        ->select('sciences.*')
-        ->get();
-        //return $sciences->site_link;
-        //exit();*/
-
-        $sciences = Science::all();
+      //  return 'Insert all information about the sciences book';
+      
+     /* $science =DB::table('sciences')
+        ->select('sciences.*');
+        
+        
+        return view('project.fetchSciences',['science'=>$science]);*/
+        $sciences = Science::paginate(5);
  
        return view('project.fetchSciences',compact('sciences'));
         
-        //return view('project.fetchSciences',['$sciences'=>$sciences]);
-
-      //  return view('inserting.insertSciences');
+        
 
     }
 
@@ -161,6 +159,9 @@ class SciencesController extends Controller
     public function show($id)
     {
         //
+        $sciences = Science::all();
+
+	return view("project.users")->with("allUsers", $sciences);
     }
 
     /**

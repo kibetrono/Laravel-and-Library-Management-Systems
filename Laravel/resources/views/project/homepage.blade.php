@@ -78,11 +78,7 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
-<div style="margin-bottom:0px;" class="jumbotron">
+        <div style="margin-bottom:0px;" class="jumbotron">
 <h1>Web Retrieval Engine</h1>
 <p>Google quide for retrieving files and documents</p>
 
@@ -113,7 +109,7 @@
 </div>
 </li>
 <li class="nav item dropdown">
-<a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">LIbrary
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Library
     <span class="caret"></span>
 </a>
 <div class="dropdown-menu" arial-labelledby="dropdown_target">
@@ -125,7 +121,7 @@
 
 <a class="dropdown-item">Historical books</a>
 <!--<div class="dropdown-divider"></div>-->
-<a href="{{url('sciences')}}"class="dropdown-item">Sciences</a> 
+<a href="{{url('sciences/show/')}}"class="dropdown-item">Sciences</a> 
 <a class="dropdown-item">Religious</a>
 <a class="dropdown-item">Novels</a>
 <a class="dropdown-item"></a>
@@ -144,5 +140,9 @@
 </div>
  </nav>
  <!--<img src="bootsrap-4-navbar-cheat.png" class="img-fluid">-->
+        </main>
+    </div>
+
+
 </body>
 </html>

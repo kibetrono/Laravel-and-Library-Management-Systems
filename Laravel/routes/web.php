@@ -1,5 +1,6 @@
 <?php
-
+use App\Science;
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,9 +11,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/welcome',function(){
- return view('welcome');
-});
+Route::get ( '/welcome', function () {
+    return view ( 'welcome' );
+} );
+Route::any ( '/search', function () {
+    $q = Request::input ( 'q' );
+    $user = Science::where ( 'site_title', 'LIKE', '%' . $q . '%' )->orWhere ( 'site_keywords', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $user ) > 0)
+        return view ( 'welcome' )->withDetails ( $user )->withQuery ( $q );
+    else
+        return view ( 'welcome' )->with ( 'No Details found. Try to search again !' );
+} );
+Route::get('/welcome2',function(){
+    return view('welcome2');
+   });
+
 Route::get('/', function () {
     return view('project.homepage');
 });
@@ -56,3 +69,9 @@ Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile
 
 
 Route::get('/photos','RetrieveImagesController@index');
+
+
+Route::get('tafuta', 'CustomSearchController@index');
+
+Route::get('users-list', 'CustomSearchController@usersList'); 
+
