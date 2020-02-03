@@ -26,4 +26,14 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+   /* protected function credentials(Request $request)
+{
+    $data = $request->only(
+        'password', 'password_confirmation', 'token'
+    );
+
+    $data['usrEmail'] = $request->get('email');
+
+    return $data;
+}*/
 }

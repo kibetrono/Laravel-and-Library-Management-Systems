@@ -7,7 +7,7 @@ use App\Science;
 use Illuminate\Support\Facades\Validator;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 
 class ScienceController extends Controller
 {
@@ -28,9 +28,11 @@ class ScienceController extends Controller
     public function display()
     {
         //
-        $sciences = Science::all();
+        $allUsers = Science::all();
+        $allUsers = Science::paginate(5);
+      //  return view('project.fetchSciences',compact('sciences'));
 
-	return view("Sciences.sciencedisplay")->with("allUsers", $sciences);
+	return view("Sciences.sciencedisplay", compact('allUsers'));
     }
 
     /**
@@ -41,7 +43,12 @@ class ScienceController extends Controller
     public function create()
     {
         //
-        return view('Sciences.sciencecreate');
+        if(Auth::user()->_id=="5dc4469e01a49c4c245bc932"){
+
+        return view('Sciences.sciencecreate');}
+        else{
+            return redirect('/');
+        }
 
     }
 
@@ -106,7 +113,11 @@ class ScienceController extends Controller
     {
         //
         $car = Science::find($id);
-        return view('Sciences.scienceedit',compact('car','id'));
+        if(Auth::user()->_id=="5dc4469e01a49c4c245bc932"){
+        return view('Sciences.scienceedit',compact('car','id'));}
+        else{
+            return view('Sciences.sciencefail');
+        }
     }
 
     /**
@@ -136,7 +147,9 @@ class ScienceController extends Controller
             $car->filename = $filePath;
         }
         $car->save();
-        return back()->with("success","Book successfully updated!!");
+        return redirect('science')->with('success', 'Book successfully updated!!');
+
+        
     }
 
     /**
@@ -149,7 +162,12 @@ class ScienceController extends Controller
     {
         //
         $car = Science::find($id);
-        $car->delete();
-        return back()->with('success','Book has been  deleted');
+       
+        if(Auth::user()->_id=="5dc4469e01a49c4c245bc932"){
+            $car->delete();
+        return back()->with('success','Book has been  deleted');}
+        else{
+            return view('Sciences.sciencefail');
+        }
     }
 }

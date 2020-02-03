@@ -6,8 +6,24 @@
     <title>Index Page</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
   </head>
+  <style>
+  .top{
+    background:black;
+   color:white;
+    width:100%;
+    position:fixed;
+  }
+  .btn{
+float:right;
+color:white;
+  }
+  </style>
   <body>
-    <div class="container">
+  <div class="top">
+  
+  <button class="btn" type="button"><a href="{{route('logout')}}">{{ __('Logout') }}</a></button>
+  </div>
+    
     <br />
     @if (\Session::has('success'))
       <div class="alert alert-success">
@@ -34,11 +50,11 @@
         <td>{{$car->site_title}}</td>
         <td>{{$car->site_link}}</td>
         <td>{{$car->site_keywords}}</td>
-        <td>{{$car->site_description}}</td>
+        <td>{{substr($car->site_description,0,50)}} ...</td>
         <td>{{$car->filename}}</td>
-        <td><a href="{{action('ScienceController@edit', $car->id)}}" class="btn btn-warning">Edit</a></td>
+        <td><a href="{{url('editScience', $car->id)}}" class="btn btn-warning">Edit</a></td>
         <td>
-          <form action="{{action('ScienceController@destroy', $car->id)}}" method="post">
+        <form action="{{url('deleteScience', $car->id)}}" method="post">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
@@ -48,7 +64,7 @@
       @endforeach
     </tbody>
   </table>
-  </div>
+  
   {{$cars->links()}}
   </body>
 </html>

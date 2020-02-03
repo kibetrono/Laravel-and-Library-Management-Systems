@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,9 +18,11 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Company</th>
-        <th>Model</th>
-        <th>Price</th>
+        <th>Title</th>
+        <th>Link</th>
+        <th>Keywords</th>
+        <th>Description</th>
+        <th>Filename</th>
         <th colspan="2">Action</th>
       </tr>
     </thead>
@@ -28,12 +31,14 @@
       @foreach($cars as $car)
       <tr>
         <td>{{$car->id}}</td>
-        <td>{{$car->carcompany}}</td>
-        <td>{{$car->model}}</td>
-        <td>{{$car->price}}</td>
-        <td><a href="{{action('CarController@edit', $car->id)}}" class="btn btn-warning">Edit</a></td>
+        <td>{{$car->site_title}}</td>
+        <td>{{$car->site_link}}</td>
+        <td>{{$car->site_keywords}}</td>
+        <td>{{substr($car->site_description,0,50)}} ...</td>
+        <td>{{$car->filename}}</td>
+        <td><a href="{{url('editHistoricals', $car->id)}}" class="btn btn-warning">Edit</a></td>
         <td>
-          <form action="{{action('CarController@destroy', $car->id)}}" method="post">
+        <form action="{{url('deleteHistoricals', $car->id)}}" method="post">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
@@ -44,5 +49,6 @@
     </tbody>
   </table>
   </div>
+  {{$cars->links()}}
   </body>
 </html>

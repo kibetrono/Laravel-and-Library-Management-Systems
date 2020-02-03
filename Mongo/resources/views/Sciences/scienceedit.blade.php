@@ -13,7 +13,7 @@
       <h2>Edit A Form</h2><br/>
       <div class="container">
     </div>
-      <form method="post" action="{{action('ScienceController@update', $id)}}" enctype="multipart/form-data">
+      <form method="post" action="{{url('updateScience', array($car->id))}}" enctype="multipart/form-data">
         @csrf
         @if(Session::has('success'))
                                 <div class="alert alert-success">
@@ -27,35 +27,35 @@
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="SiteTitle">Site Title:</label>
-            <input type="text" class="form-control" name="site_title" value="{{$car->carcompany}}">
+            <input type="text" class="form-control" name="site_title" value="{{$car->site_title}}">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="SiteLink">Site Link:</label>
-            <input type="text" class="form-control" name="site_link" value="{{$car->model}}">
+            <input type="text" class="form-control" name="site_link" value="{{$car->site_link}}">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="SiteKeywords">Site Keywords:</label>
-            <input type="text" class="form-control" name="site_keywords" value="{{$car->price}}">
+            <input type="text" class="form-control" name="site_keywords" value="{{$car->site_keywords}}">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="SiteDescription">Site Description:</label>
-            <input type="text" class="form-control" name="site_description" value="{{$car->price}}">
+            <input type="text" class="form-control" name="site_description" value="{{$car->site_description}}">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="Filename">Filename:</label>
-            <input type="file" class="form-control" name="filename" value="{{$car->price}}">
+            <input type="file" class="form-control" name="filename" value="{{$car->filename}}">
           </div>
         </div>
         <div class="row">

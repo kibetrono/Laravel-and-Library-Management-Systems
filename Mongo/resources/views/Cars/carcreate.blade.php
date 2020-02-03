@@ -10,36 +10,36 @@
   </head>
   <body>
     <div class="container">
-      <h2>Edit A Form</h2><br/>
+      <h2>Laravel MongoDB CRUD Tutorial With Example</h2><br/>
       <div class="container">
     </div>
-      <form method="post" action="{{action('CarController@update', $id)}}">
+      <form method="post" action="{{url('carsave')}}">
         @csrf
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="Carcompany">Car Company:</label>
-            <input type="text" class="form-control" name="carcompany" value="{{$car->carcompany}}">
+            <input type="text" class="form-control" name="carcompany">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="Model">Model:</label>
-            <input type="text" class="form-control" name="model" value="{{$car->model}}">
+            <input type="text" class="form-control" name="model">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="Price">Price:</label>
-            <input type="text" class="form-control" name="price" value="{{$car->price}}">
+            <input type="text" class="form-control" name="price">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
-            <button type="submit" class="btn btn-success">Update</button>
+            <button type="submit" class="btn btn-success">Submit</button>
           </div>
         </div>
       </form>
